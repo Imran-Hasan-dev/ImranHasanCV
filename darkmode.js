@@ -1,62 +1,36 @@
 /* ============================================
-   DARK MODE TOGGLE — Flip/Rotate Animation
+   DARK MODE — Switch Toggle
    ============================================ */
 (function () {
   const root = document.documentElement;
   const STORAGE_KEY = 'portfolio-theme';
 
-  function applyTheme(theme, animate) {
+  function applyTheme(theme) {
     if (theme === 'dark') {
       root.setAttribute('data-theme', 'dark');
     } else {
       root.removeAttribute('data-theme');
     }
-    const btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-
-    btn.setAttribute('title', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-
-    if (animate) {
-      // Phase 1: spin out (0 → 180°) while fading out
-      btn.classList.add('theme-toggle--spinning-out');
-
-      setTimeout(function () {
-        // Swap icon at the halfway point
-        btn.innerHTML = theme === 'dark'
-          ? '<i class="uil uil-sun"></i>'
-          : '<i class="uil uil-moon"></i>';
-
-        btn.classList.remove('theme-toggle--spinning-out');
-        // Phase 2: spin in (180° → 360°) while fading in
-        btn.classList.add('theme-toggle--spinning-in');
-
-        setTimeout(function () {
-          btn.classList.remove('theme-toggle--spinning-in');
-        }, 220);
-      }, 220);
-    } else {
-      // No animation on first load
-      btn.innerHTML = theme === 'dark'
-        ? '<i class="uil uil-sun"></i>'
-        : '<i class="uil uil-moon"></i>';
-    }
+    // Sync the checkbox state
+    const checkbox = document.getElementById('theme-switch-input');
+    if (checkbox) checkbox.checked = (theme === 'dark');
   }
 
   function toggleTheme() {
     const current = root.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     localStorage.setItem(STORAGE_KEY, next);
-    applyTheme(next, true);
+    applyTheme(next);
   }
 
-  // Apply saved theme immediately before paint (no animation)
+  // Apply before paint
   const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved) applyTheme(saved, false);
+  if (saved) applyTheme(saved);
 
   document.addEventListener('DOMContentLoaded', function () {
     const theme = localStorage.getItem(STORAGE_KEY) || 'light';
-    applyTheme(theme, false);
-    const btn = document.getElementById('theme-toggle');
-    if (btn) btn.addEventListener('click', toggleTheme);
+    applyTheme(theme);
+    const checkbox = document.getElementById('theme-switch-input');
+    if (checkbox) checkbox.addEventListener('change', toggleTheme);
   });
 })();
