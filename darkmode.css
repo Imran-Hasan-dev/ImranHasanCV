@@ -269,75 +269,105 @@
 }
 
 /* ============================================
-   THEME TOGGLE BUTTON — Flip/Rotate Animation
+   THEME TOGGLE — iOS-style Switch
    ============================================ */
 
-@keyframes spin-out {
-  0%   { transform: rotate(0deg)   scale(1);    opacity: 1; }
-  100% { transform: rotate(180deg) scale(0.4);  opacity: 0; }
+/* Hide the real checkbox */
+#theme-switch-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
-@keyframes spin-in {
-  0%   { transform: rotate(180deg) scale(0.4);  opacity: 0; }
-  60%  { transform: rotate(400deg) scale(1.15); opacity: 1; }
-  80%  { transform: rotate(350deg) scale(0.95); }
-  100% { transform: rotate(360deg) scale(1);    opacity: 1; }
-}
-
-#theme-toggle {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 20px;
-  color: var(--text-color-second);
+/* The label IS the visible switch */
+.theme-switch {
   display: flex;
   align-items: center;
-  justify-content: center;
-  line-height: 1;
-  margin-right: 6px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+  gap: 7px;
+  cursor: pointer;
+  margin-right: 10px;
+  user-select: none;
+  flex-shrink: 0;
 }
-#theme-toggle::before {
+
+/* Moon icon (left side) */
+.theme-switch .switch-icon-moon {
+  font-size: 16px;
+  color: #888;
+  transition: color 0.3s;
+}
+
+/* Sun icon (right side) */
+.theme-switch .switch-icon-sun {
+  font-size: 16px;
+  color: #888;
+  transition: color 0.3s;
+}
+
+/* The track */
+.theme-switch .switch-track {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  border-radius: 999px;
+  background: #ccc;
+  transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.35s;
+  flex-shrink: 0;
+}
+
+/* The sliding knob */
+.theme-switch .switch-track::after {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background: rgba(110,87,224,0.08);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-#theme-toggle:hover::before { opacity: 1; }
-#theme-toggle:hover {
-  color: var(--first-color);
-  box-shadow: 0 0 0 2px rgba(110,87,224,0.2);
-}
-#theme-toggle i {
-  display: block;
-  transform-origin: center;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1),
+              background 0.3s;
 }
 
-/* Spin-out: existing icon exits (0→180°, shrinks + fades) */
-#theme-toggle.theme-toggle--spinning-out i {
-  animation: spin-out 0.22s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+/* Hover glow on track */
+.theme-switch:hover .switch-track {
+  box-shadow: 0 0 0 3px rgba(110, 87, 224, 0.18);
 }
 
-/* Spin-in: new icon enters (180→360°, grows + bounces in) */
-#theme-toggle.theme-toggle--spinning-in i {
-  animation: spin-in 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+/* CHECKED (dark mode ON) states */
+#theme-switch-input:checked ~ label .switch-track,
+#theme-switch-input:checked + label .switch-track {
+  background: rgb(130, 110, 240);
 }
 
-[data-theme="dark"] #theme-toggle { color: #a0a0c0; }
-[data-theme="dark"] #theme-toggle::before {
-  background: rgba(140,118,248,0.12);
+#theme-switch-input:checked ~ label .switch-track::after,
+#theme-switch-input:checked + label .switch-track::after {
+  transform: translateX(22px);
+  background: #fff;
 }
-[data-theme="dark"] #theme-toggle:hover {
-  color: rgb(140,118,248);
-  box-shadow: 0 0 0 2px rgba(140,118,248,0.25);
+
+/* Active icons highlight */
+#theme-switch-input:checked ~ label .switch-icon-sun,
+#theme-switch-input:checked + label .switch-icon-sun {
+  color: rgb(130, 110, 240);
+}
+
+.theme-switch:has(#theme-switch-input:not(:checked)) .switch-icon-moon,
+#theme-switch-input:not(:checked) ~ label .switch-icon-moon,
+#theme-switch-input:not(:checked) + label .switch-icon-moon {
+  color: #555;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .switch-track { background: rgb(130, 110, 240); }
+[data-theme="dark"] .theme-switch .switch-icon-moon { color: #a0a0c0; }
+[data-theme="dark"] .theme-switch .switch-icon-sun  { color: rgb(140,118,248); }
+[data-theme="dark"] .theme-switch:hover .switch-track {
+  box-shadow: 0 0 0 3px rgba(140,118,248,0.25);
 }
 
 /* Smooth transition for all color/bg changes */
