@@ -157,6 +157,11 @@
 }
 [data-theme="dark"] .cert-img-wrap {
   background: #12121e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 /* Keep cert images fully visible in dark mode */
 [data-theme="dark"] .cert-img-wrap img {
