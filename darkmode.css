@@ -269,32 +269,75 @@
 }
 
 /* ============================================
-   THEME TOGGLE BUTTON
+   THEME TOGGLE BUTTON — Flip/Rotate Animation
    ============================================ */
+
+@keyframes spin-out {
+  0%   { transform: rotate(0deg)   scale(1);    opacity: 1; }
+  100% { transform: rotate(180deg) scale(0.4);  opacity: 0; }
+}
+
+@keyframes spin-in {
+  0%   { transform: rotate(180deg) scale(0.4);  opacity: 0; }
+  60%  { transform: rotate(400deg) scale(1.15); opacity: 1; }
+  80%  { transform: rotate(350deg) scale(0.95); }
+  100% { transform: rotate(360deg) scale(1);    opacity: 1; }
+}
+
 #theme-toggle {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 22px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
   color: var(--text-color-second);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
   line-height: 1;
   margin-right: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
 }
+#theme-toggle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(110,87,224,0.08);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+#theme-toggle:hover::before { opacity: 1; }
 #theme-toggle:hover {
-  background: rgba(110,87,224,0.1);
   color: var(--first-color);
-  transform: rotate(20deg);
+  box-shadow: 0 0 0 2px rgba(110,87,224,0.2);
 }
+#theme-toggle i {
+  display: block;
+  transform-origin: center;
+}
+
+/* Spin-out: existing icon exits (0→180°, shrinks + fades) */
+#theme-toggle.theme-toggle--spinning-out i {
+  animation: spin-out 0.22s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* Spin-in: new icon enters (180→360°, grows + bounces in) */
+#theme-toggle.theme-toggle--spinning-in i {
+  animation: spin-in 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
 [data-theme="dark"] #theme-toggle { color: #a0a0c0; }
+[data-theme="dark"] #theme-toggle::before {
+  background: rgba(140,118,248,0.12);
+}
 [data-theme="dark"] #theme-toggle:hover {
-  background: rgba(140,118,248,0.15);
   color: rgb(140,118,248);
+  box-shadow: 0 0 0 2px rgba(140,118,248,0.25);
 }
 
 /* Smooth transition for all color/bg changes */
