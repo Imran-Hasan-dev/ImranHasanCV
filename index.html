@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="stylesheet" href="darkmode.css">
     <!-- --------- UNICONS ---------- -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 
@@ -15,6 +15,7 @@
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
+    <script src="darkmode.js"></script>
 <script type="text/javascript">
    (function(){
       emailjs.init({
@@ -54,6 +55,12 @@
                 </li>
             </ul>
         </div>
+          <div class="nav-button">
+    <button id="theme-toggle" title="Switch to dark mode">
+        <i class="uil uil-moon"></i>
+    </button>
+    <button class="btn" onclick="downloadFile()">Download CV <i class="uil uil-file-alt"></i></button>
+</div>
         <div class="nav-button">
             <button class="btn" onclick="downloadFile()">Download CV <i class="uil uil-file-alt"></i></button>
         </div>
