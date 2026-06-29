@@ -292,9 +292,22 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 0;
   user-select: none;
   flex-shrink: 0;
+}
+
+/* Nav list item that wraps the switch */
+.nav_list.nav-switch-item {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+/* No dot indicator under the switch */
+.nav_list.nav-switch-item .circle {
+  display: none;
 }
 
 /* The track */
