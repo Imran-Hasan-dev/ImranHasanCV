@@ -159,7 +159,7 @@ nav{
     position: relative;
     display: flex;
     height: 100vh;
-    min-height: 700px;
+    min-height: 600px;
 }
 
 /* ----- FEATURED TEXT BOX ----- */
@@ -1368,4 +1368,70 @@ footer{
     background: #e8f0fe;
     color: #1a56db;
     border: 1px solid #c3d9fb;
+}
+
+/* ============================================
+   ABOUT SECTION — RESTRUCTURED LAYOUT
+   ============================================ */
+
+/* Row 1: Intro (compact) + Education side-by-side */
+.about-intro-card--compact {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    background: var(--color-black);
+    border-radius: 20px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    padding: 32px;
+}
+
+.about-intro-card--compact .about-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
+}
+
+.about-intro-card--compact .about-intro-text h2 {
+    font-size: 20px;
+}
+
+.about-intro-card--compact .about-bio {
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* Row 2: full-width stacked single column */
+.about-grid-row--single {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Bigger skill icons */
+.skill-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.skill-tags span i {
+    font-size: 16px;
+    margin-right: 7px;
+}
+
+.skill-tags span {
+    padding: 6px 14px;
+    font-size: 13.5px;
+}
+
+@media only screen and (max-width: 900px) {
+    .about-intro-card--compact {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-intro-card--compact .about-bio {
+        text-align: center !important;
+    }
 }
