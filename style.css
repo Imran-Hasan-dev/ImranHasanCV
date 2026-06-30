@@ -656,7 +656,7 @@ footer{
 
         .education-section h2 {
             color: #333;
-            border-bottom: 2px solid #00aaff; /* Changed to sky blue */
+            border-bottom: 2px solid #00aaff;
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 2rem;
@@ -684,7 +684,6 @@ footer{
             font-size: 1rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .container {
                 width: 95%;
@@ -724,7 +723,6 @@ footer{
                 font-size: 0.9rem;
             }
         }
-      /* Education Section */
       .education-section {
         background: #fff;
         padding: 15px;
@@ -738,7 +736,7 @@ footer{
         border-bottom: 2px solid #00aaff;
         padding-bottom: 6px;
         margin-bottom: 12px;
-        font-size: 1.2rem; /* Reduced size */
+        font-size: 1.2rem;
     }
 
     .education-item {
@@ -748,22 +746,21 @@ footer{
     .education-item h3 {
         color: #333;
         margin: 0;
-        font-size: 1.0rem; /* Reduced size */
+        font-size: 1.0rem;
     }
 
     .education-item h4 {
         color: #458fb5;
         margin: 5px 0;
-        font-size: 1.0rem; /* Reduced size */
+        font-size: 1.0rem;
     }
 
     .education-item p {
         margin: 5px 0;
         color: #555;
-        font-size: 0.9rem; /* Reduced size */
+        font-size: 0.9rem;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
         .container {
             width: 95%;
@@ -810,6 +807,7 @@ footer{
         overflow: hidden;
         border-radius: 8px;
     }
+
 /* ============================================
    REDESIGNED ABOUT SECTION
    ============================================ */
@@ -1051,7 +1049,7 @@ footer{
     border: 1px solid #e0e0e0;
 }
 
-/* ---- Certifications Grid ---- */
+/* ---- Certifications Grid (FIXED — images now fill the card) ---- */
 .cert-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1061,21 +1059,22 @@ footer{
 .cert-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 24px 20px;
+    align-items: stretch;
+    text-align: left;
+    padding: 0;
     border: 1.5px solid #f0eeff;
     border-radius: 16px;
     background: #fafafe;
     text-decoration: none;
+    overflow: hidden;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .cert-card:hover {
     border-color: var(--first-color);
-    box-shadow: 0 6px 20px rgba(110, 87, 224, 0.12);
-    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(110, 87, 224, 0.15);
+    transform: translateY(-4px);
 }
 
 .cert-card--static {
@@ -1088,19 +1087,30 @@ footer{
     border-color: #f0eeff;
 }
 
-.cert-badge-img {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
+.cert-img-wrap {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #f4f2ff;
+    margin: 0;
 }
 
-.cert-badge-img img {
+.cert-img-wrap img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.35s ease;
+}
+
+.cert-card:hover .cert-img-wrap img {
+    transform: scale(1.06);
+}
+
+.cert-footer {
+    padding: 16px 18px 18px;
+    text-align: left;
 }
 
 .cert-issuer {
@@ -1113,7 +1123,7 @@ footer{
     margin-bottom: 6px;
 }
 
-.cert-info h4 {
+.cert-footer h4 {
     font-size: 14px;
     font-weight: 600;
     color: var(--text-color-second);
@@ -1196,5 +1206,8 @@ footer{
     .cert-grid {
         max-width: 100%;
     }
-}
 
+    .cert-img-wrap {
+        height: 180px;
+    }
+}
