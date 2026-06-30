@@ -392,3 +392,24 @@ textarea,
   transition: background 0.3s ease, color 0.3s ease,
               border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* ---- AI & Tools tag variants (dark) ---- */
+[data-theme="dark"] .skill-tags--ai span {
+  background: #2a1010;
+  color: #ff8a80;
+  border-color: #4a1a1a;
+}
+[data-theme="dark"] .skill-tags--tools span {
+  background: #0e1a30;
+  color: #6ea8fe;
+  border-color: #1a2c50;
+}
+[data-theme="dark"] .skill-icon {
+  filter: brightness(0.95);
+}
+
+/* ---- Compact intro card (row 1 layout) ---- */
+[data-theme="dark"] .about-intro-card--compact {
+  background: #1c1c28;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
