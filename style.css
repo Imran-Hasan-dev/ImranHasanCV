@@ -1211,3 +1211,161 @@ footer{
         height: 180px;
     }
 }
+
+/* ============================================
+   PROJECTS SECTION — FILTERABLE GRID
+   ============================================ */
+
+.project-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 20px;
+    background: var(--color-black);
+    color: var(--text-color-second);
+    border: 1.5px solid #ece9fb;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--first-color);
+    color: var(--first-color);
+}
+
+.filter-btn.active {
+    background: var(--first-color);
+    color: #fff;
+    border-color: var(--first-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.project-card {
+    background: var(--color-black);
+    border-radius: 16px;
+    box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
+    padding: 26px 24px;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(110, 87, 224, 0.15);
+}
+
+.project-card.hidden {
+    display: none;
+}
+
+.project-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.project-tag--webapp {
+    background: #e0f7fa;
+    color: #00838f;
+}
+
+.project-tag--desktop {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.project-tag--netsuite {
+    background: #f0eeff;
+    color: var(--first-color);
+}
+
+.project-tag--crm {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.project-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color-second);
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    font-size: 13.5px;
+    color: #888;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-filters {
+        gap: 8px;
+    }
+
+    .filter-btn {
+        font-size: 13px;
+        padding: 7px 16px;
+    }
+}
+
+/* ============================================
+   SKILL ICONS & NEW TAG VARIANTS
+   ============================================ */
+
+.skill-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    vertical-align: -2px;
+    object-fit: contain;
+}
+
+.skill-tags span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.skill-tags span i {
+    font-size: 13px;
+    margin-right: 6px;
+}
+
+.skill-tags--ai span {
+    background: #fdeaea;
+    color: #c0392b;
+    border: 1px solid #f5c6c0;
+}
+
+.skill-tags--tools span {
+    background: #e8f0fe;
+    color: #1a56db;
+    border: 1px solid #c3d9fb;
+}
