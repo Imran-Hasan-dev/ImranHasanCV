@@ -22,15 +22,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* INCREASED BASE FONT SIZE */
+/* MODERATE FONT SIZE INCREASE */
 html {
-    font-size: 18px;           /* This is the main change - bigger base */
+    font-size: 16.5px;        /* Balanced increase */
 }
 
 body{
     background: var(--body-color);
-    font-size: 1.1rem;         /* Slightly larger default text */
-    line-height: 1.7;
+    font-size: 1.05rem;
+    line-height: 1.75;
 }
 
 /* ----- SMOOTH SCROLL ----- */
@@ -57,8 +57,8 @@ html{
 /* ----- GLOBAL BUTTON ----- */
 .btn{
     font-weight: 500;
-    padding: 14px 24px;
-    font-size: 1.05rem;
+    padding: 13px 22px;
+    font-size: 1.02rem;
     background: #efefef;
     border: none;
     border-radius: 10px;
@@ -66,46 +66,43 @@ html{
     transition: .4s;
 }
 
-/* ----- ICONS ----- */
-i{
-    font-size: 1.1rem;
-}
-
-/* ----- NAVIGATION BAR ----- */
+/* ----- NAVIGATION ----- */
 .nav-name{
-    font-size: 2rem;           /* Larger logo text */
+    font-size: 1.85rem;
 }
 .nav-link{
-    font-size: 1.1rem;
-    padding-inline: 18px;
-    margin-inline: 20px;
+    font-size: 1.05rem;
 }
 
 /* ----- FEATURED BOX ----- */
 .featured-name{
-    font-size: 3.2rem;         /* Much larger name */
+    font-size: 2.8rem;
     font-weight: 700;
 }
 .typedText{
-    font-size: 3.2rem;
+    font-size: 2.8rem;
 }
 .featured-text-info{
-    font-size: 1.15rem;        /* Larger description */
+    font-size: 1.1rem;
     line-height: 1.8;
 }
 
 /* ----- SOCIAL ICONS (BIGGER) ----- */
 .social_icons{
     display: flex;
-    margin-top: 2.8em;
-    gap: 28px;
+    margin-top: 2.5em;
+    gap: 25px;
 }
 .icon{
-    width: 58px;
-    height: 58px;
-    font-size: 1.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    font-size: 1.85rem;
     border-radius: 50%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 .icon:hover{
@@ -114,67 +111,82 @@ i{
 }
 
 /* ----- FEATURED IMAGE ----- */
+.featured-image{
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    min-height: 60vh;
+    width: 50%;
+}
 .image{
+    margin: auto 0;
     width: 380px;
     height: 380px;
+    border-radius: 55% 45% 55% 45%;
+    overflow: hidden;
+    animation: imgFloat 7s ease-in-out infinite;
 }
 .image img{
     width: 380px;
     height: 380px;
+    object-fit: cover;
+}
+@keyframes imgFloat {
+    50%{
+        transform: translateY(10px);
+        border-radius: 45% 55% 45% 55%;
+    }
 }
 
 /* ----- SECTION HEADINGS ----- */
 .top-header h1{
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 700;
 }
 .top-header span{
-    font-size: 1.15rem;
+    font-size: 1.1rem;
 }
 
 /* ----- ABOUT SECTION ----- */
 .about-intro-text h2 {
-    font-size: 1.8rem;
+    font-size: 1.65rem;
 }
 .about-tagline {
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 .about-bio {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     line-height: 1.75;
 }
 .about-soft-skills span {
+    font-size: 0.95rem;
+}
+.skill-tags span {
     font-size: 1rem;
     padding: 6px 14px;
 }
 
-/* Skills & Other Text */
-.skill-group-label {
-    font-size: 0.95rem;
-}
-.skill-tags span {
-    font-size: 1.05rem;
-    padding: 8px 16px;
-}
-
 /* ----- PROJECTS ----- */
 .project-card h3 {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
 }
 .project-card p {
-    font-size: 1.05rem;
+    font-size: 1rem;
 }
 
-/* ----- CONTACT FORM ----- */
-.input-field, .input-field-2, textarea {
-    font-size: 1.1rem;
+/* ----- FOOTER SOCIAL ICONS ----- */
+.footer-social-icons{
+    display: flex;
+    gap: 25px;
 }
-
-/* ----- FOOTER ----- */
 .footer-social-icons .icon{
-    width: 52px;
-    height: 52px;
-    font-size: 1.75rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+    transition: all 0.3s ease;
+}
+.footer-social-icons .icon:hover{
+    transform: translateY(-5px) scale(1.08);
 }
 
 /* Remove gap between Home and About */
@@ -188,12 +200,10 @@ i{
     margin-top: -30px;
 }
 
-/* ==================== OTHER STYLES (Preserved) ==================== */
-
+/* ==================== OTHER STYLES ==================== */
 .wrapper{
     padding-inline: 10vw;
 }
-
 .row{
     display: flex;
     justify-content: space-between;
@@ -215,39 +225,27 @@ footer{
     padding-block: 40px 60px;
 }
 .top-footer p{
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 600;
 }
 .bottom-footer{
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
 /* Media Queries */
 @media only screen and (max-width: 900px) {
-    .featured-name,
-    .typedText {
-        font-size: 2.6rem;
-    }
-    html {
-        font-size: 16px;   /* Slightly smaller on mobile for better fit */
+    .featured-name, .typedText {
+        font-size: 2.4rem;
     }
 }
 
 @media only screen and (max-width: 540px) {
-    .featured-name,
-    .typedText {
-        font-size: 2.2rem;
+    html {
+        font-size: 15.5px;
     }
-    .social_icons .icon,
-    .footer-social-icons .icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.6rem;
+    .featured-name, .typedText {
+        font-size: 2.1rem;
     }
 }
 
-/* Your existing project filters, certifications, timeline, etc. styles remain functional */
-.project-filters button,
-.filter-btn {
-    font-size: 1.05rem;
-}
+/* Your existing styles for timeline, certifications, project filters, etc. remain intact */
