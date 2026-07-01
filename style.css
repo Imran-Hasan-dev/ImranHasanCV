@@ -1313,8 +1313,9 @@ footer{
     }
 }
 
+
 /* ============================================
-   PROJECTS SECTION — TIMELINE/SHOWCASE LAYOUT
+   PROJECTS SECTION — FILTERABLE GRID
    ============================================ */
 
 .project-filters {
@@ -1322,7 +1323,7 @@ footer{
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .filter-btn {
@@ -1348,61 +1349,27 @@ footer{
     border-color: var(--first-color);
 }
 
-.project-timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
-    padding-left: 40px;
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
-.project-timeline::before {
-    content: '';
-    position: absolute;
-    left: 9px;
-    top: 8px;
-    bottom: 8px;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--first-color), var(--second-color));
-    border-radius: 2px;
-}
-
-.project-entry {
-    position: relative;
-    margin-bottom: 28px;
-}
-
-.project-entry:last-child {
-    margin-bottom: 0;
-}
-
-.project-entry.hidden {
-    display: none;
-}
-
-.project-entry-dot {
-    position: absolute;
-    left: -40px;
-    top: 24px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--first-color);
-    border: 3px solid var(--body-color);
-    box-shadow: 0 0 0 2px var(--first-color);
-    z-index: 2;
-}
-
-.project-entry-card {
+.project-card {
     background: var(--color-black);
     border-radius: 16px;
     box-shadow: 1px 8px 10px 2px var(--first-shadow-color);
-    padding: 24px 28px;
+    padding: 26px 24px;
     transition: all 0.3s ease;
 }
 
-.project-entry-card:hover {
-    transform: translateX(6px);
+.project-card:hover {
+    transform: translateY(-4px);
     box-shadow: 0 10px 24px rgba(110, 87, 224, 0.15);
+}
+
+.project-card.hidden {
+    display: none;
 }
 
 .project-tag {
@@ -1413,7 +1380,7 @@ footer{
     letter-spacing: 0.6px;
     padding: 4px 12px;
     border-radius: 20px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .project-tag--webapp {
@@ -1436,33 +1403,29 @@ footer{
     color: #2e7d32;
 }
 
-.project-entry-card h3 {
-    font-size: 17px;
+.project-card h3 {
+    font-size: 16px;
     font-weight: 600;
     color: var(--text-color-second);
     margin-bottom: 8px;
 }
 
-.project-entry-card p {
-    font-size: 14px;
+.project-card p {
+    font-size: 13.5px;
     color: #888;
     line-height: 1.6;
     margin-bottom: 0;
 }
 
-@media only screen and (max-width: 700px) {
-    .project-timeline {
-        padding-left: 30px;
+@media only screen and (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    .project-entry-dot {
-        left: -30px;
-        width: 12px;
-        height: 12px;
-    }
-
-    .project-entry-card {
-        padding: 20px 22px;
+@media only screen and (max-width: 540px) {
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 
     .project-filters {
